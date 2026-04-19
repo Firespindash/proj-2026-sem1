@@ -239,11 +239,11 @@ class A8 extends A {
   }
 
   static getInstance() {
-    if (!A0.#instance) {
-      A0.#instance = new A0();
+    if (!A8.#instance) {
+      A8.#instance = new A8();
     }
 
-    return A0.#instance;
+    return A8.#instance;
   }
 }
 class A9 extends A {
