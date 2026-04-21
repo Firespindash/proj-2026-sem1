@@ -21,9 +21,13 @@
   <body>
     <script type="text/javascript" src="interfaces.js"></script>
     <script type="text/javascript" src="ISO_A.js"></script>
+    <script type="text/javascript" src="ISO_B.js"></script>
+    <script type="text/javascript" src="ISO_C.js"></script>
     <script type="text/javascript" src="program.js"></script>
     <script type="text/javascript">
-     const TipoA = new A0();
+     const fabrica = new iFactory();
+     
+     const TipoA = fabrica.criarPapel("A0");
 
      const { div, p } = van.tags;
 

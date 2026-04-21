@@ -14,25 +14,30 @@ class C extends ISO {
       throw new Error("Por favor, não tente instanciar a classe abstrata C.");
     }
   }
+  
   mostrarPropriedades() {
     return `${this.largura} mm, ${this.comprimento} mm, ${this.cor}, ${this.gramatura} gsm, ${this.tamanhoMax} mm2`;
-  }  
+  }
+  
   mostrarTamanhoFolha() {
     return `${this.tamanhoMax} x ${this.tamanhoMax} mm`;
   }
   
   retornar_tipos() {
     return this.tipos;
-  }  
+  }
 }
+
 class C0 extends C {
   static #instance;
 
   constructor() {
-    super();    
+    super();
+    
     if (C0.#instance) {
       return C0.#instance;
     }
+    
     this.largura = 917; // Largura do C0 em mm
     this.comprimento = 1297; // Comprimento do C0 em mm
     this.tamanhoMax = 1189349; // Tamanho máximo do C0 em mm2
@@ -63,6 +68,7 @@ class C1 extends C {
     this.tamanhoMax = 594216; // Tamanho máximo do C1 em mm2
     C1.#instance = this;
   }
+  
   static getInstance() {
     if (!C1.#instance) {
       C1.#instance = new C1();
@@ -106,6 +112,7 @@ class C3 extends C {
     if (C3.#instance) {
       return C3.#instance;
     }
+    
     this.largura = 324; // Largura do C3 em mm
     this.comprimento = 458; // Comprimento do C3 em mm
     this.tamanhoMax = 14839; // Tamanho máximo do C3 em mm2
@@ -120,6 +127,7 @@ class C3 extends C {
     return C3.#instance;
   }
 }
+
 class C4 extends C {
   static #instance;
 
@@ -135,15 +143,19 @@ class C4 extends C {
     this.tamanhoMax = 74196; // Tamanho máximo do C4 em mm2
     C4.#instance = this;
   }
+  
   static getInstance() {
     if (!C4.#instance) {
       C4.#instance = new C4();
     }
+    
     return C4.#instance;
   }
 }
-class C5 extends C{
+
+class C5 extends C {
   static #instance;
+  
   constructor() {
     super();
     
@@ -156,106 +168,135 @@ class C5 extends C{
     this.tamanhoMax = 37098; // Tamanho máximo do C5 em mm2
     C5.#instance = this;
   }
+  
   static getInstance() {
     if (!C5.#instance) {
       C5.#instance = new C5();
     }
+    
     return C5.#instance;
   }
 }
+
 class C6 extends C {
   static #instance;
+  
   constructor() {
-    super();    
+    super();
+    
     if (C6.#instance) {
       return C6.#instance;
     }
+    
     this.largura = 114; // Largura do C6 em mm
     this.comprimento = 162; // Comprimento do C6 em mm
     this.tamanhoMax = 18468; // Tamanho máximo do C6 em mm2
     C6.#instance = this;
   }
+  
   static getInstance() {
     if (!C6.#instance) {
       C6.#instance = new C6();
     }
+    
     return C6.#instance;
   }
 }
 class C7 extends C {
   static #instance;
+  
   constructor() {
-    super();    
+    super();
+    
     if (C7.#instance) {
       return C7.#instance;
     }
+    
     this.largura = 81; // Largura do C7 em mm
     this.comprimento = 114; // Comprimento do C7 em mm
     this.tamanhoMax = 9234; // Tamanho máximo do C7 em mm2
     C7.#instance = this;
   }
+  
   static getInstance() {
     if (!C7.#instance) {
       C7.#instance = new C7();
     }
+    
     return C7.#instance;
   }
 }
 class C8 extends C {
   static #instance;
+  
   constructor() {
-    super();    
+    super();
+    
     if (C8.#instance) {
       return C8.#instance;
     }
+    
     this.largura = 57; // Largura do C8 em mm
     this.comprimento = 81; // Comprimento do C8 em mm
     this.tamanhoMax = 4617; // Tamanho máximo do C8 em mm2
     C8.#instance = this;
   }
+  
   static getInstance() {
     if (!C8.#instance) {
       C8.#instance = new C8();
     }
+    
     return C8.#instance;
   }
 }
+
 class C9 extends C {
   static #instance;
+  
   constructor() {
-    super();    
+    super();
+    
     if (C9.#instance) {
       return C9.#instance;
     }
+    
     this.largura = 40; // Largura do C9 em mm
     this.comprimento = 57; // Comprimento do C9 em mm
     this.tamanhoMax = 2280; // Tamanho máximo do C9 em mm2
     C9.#instance = this;
   }
+  
   static getInstance() {
     if (!C9.#instance) {
       C9.#instance = new C9();
     }
+    
     return C9.#instance;
   }
 }
+
 class C10 extends C {
   static #instance;
+  
   constructor() {
-    super();    
+    super();
+    
     if (C10.#instance) {
       return C10.#instance;
     }
+    
     this.largura = 28; // Largura do C10 em mm
     this.comprimento = 40; // Comprimento do C10 em mm
     this.tamanhoMax = 1120; // Tamanho máximo do C10 em mm2
     C10.#instance = this;
   }
+  
   static getInstance() {
     if (!C10.#instance) {
       C10.#instance = new C10();
     }
+    
     return C10.#instance;
   }
 }
-

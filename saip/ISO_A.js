@@ -9,6 +9,7 @@ class A extends ISO {
     this.gramatura = 95;
     this.tamanhoMax = this.tamanhoMax;
     this.tipos = ["A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"];
+    
     if (this.constructor === A) {
       throw new Error("Por favor, não tente instanciar a classe abstrata A.");
     }
@@ -294,4 +295,3 @@ class A10 extends A {
     return A10.#instance;
   }
 }
-
