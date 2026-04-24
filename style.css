@@ -8,6 +8,7 @@
   --base-text-size:1.2rem;
 }
 html{
+    font-family: 'Roboto', sans-serif;
     font-size: 62.5%;
 }
 body {
@@ -20,6 +21,7 @@ body {
  top: calc(var(--base-distance)*10);
  left: var(--base-margin);
  font-size: calc(var(--base-text-size)*12);
+ text-transform: uppercase; 
 }
 #subtitulo {
     position:absolute;
@@ -33,4 +35,13 @@ body {
 }
 #principal, #subtitulo {
     left:var(--base-margin);
+}
+button {
+outline:none;
+width:100%;
+height:7.8rem;
+background-color:#4da3ff;
+position:absolute;
+bottom:1px;
+
 }
