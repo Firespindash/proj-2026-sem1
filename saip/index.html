@@ -57,6 +57,14 @@
          background-color: #ff8c42 !important;
      }
 
+     .bg-success {
+         background-color: #1f867c !important;
+     }
+
+     .txt-success {
+         color: #2ec4b6;
+     }
+
      .btn-inicial:focus-visible, .btn-inicial:hover, .btn-inicial:active {
          background-color: #4da3ff;
          border-color: #4da3ff;
@@ -102,6 +110,18 @@
      .p-2-4 {
          padding: 2px 4px;
      }
+
+     .popup {
+         top: 10rem;
+         left: 0;
+         right: 0;
+         width: 27rem;
+         height: fit-content;
+         margin: 0 auto;
+         background-color: #e9eaec;
+         overflow: hidden;
+         z-index: 9999;
+     }
     </style>
   </head>
   <body>
@@ -115,11 +135,11 @@
      
      const TipoA = fabrica.criarPapel("A0");
 
-     const { div, h1, button, img, form, label, select, input, datalist, option } = van.tags;
+     const { div, h1, h4, button, img, form, label, select, input, datalist, option, p } = van.tags;
 
      const closed = van.state(false);
 
-     let telaPedidoRef, telaCustom, pedido;
+     let telaPedidoRef, telaCustom, pedido, popupRef;
      
      const tipoSelecionado = van.state('A0');
      const quantidade = van.state('');
@@ -133,11 +153,13 @@
 
      const botaoVoltar = ref => {
        if (ref == "TelaPedidos") {
-         return () => button({ class: "btn txt-black m-0 p-0", style: "font-weight: bold; font-size: 2.4rem;", onclick: () => telaPedidoRef.remove() }, "< Voltar")
+         ref = () => telaPedidoRef.remove();
        }
        else if (ref == "TelaCustom") {
-         return () => button({ class: "btn txt-black m-0 p-0", style: "font-weight: bold; font-size: 2.4rem;", onclick: () => telaCustomRef.remove() }, "< Voltar")
+         ref = () => telaCustomRef.remove();
        }
+       
+       if (ref != '') return () => button({ class: "btn txt-black m-0 p-0", style: "font-weight: bold; font-size: 2.4rem;", onclick: ref }, "< Voltar")
      }
      
      const header = (titulo, el = '') => div({ class: "position-fixed top-0 start-0 m-0 p-0 d-flex justify-content-between", style: "width: calc(50% + 7.2rem); height: calc(20rem + 7.2rem);" },
@@ -146,11 +168,33 @@
        h1({ class: "p-0", style: "margin-top: 20rem; font-size: 7.2rem;" }, titulo)
      );
 
+     const popupNotif = (info, type = 'success') => {
+       let headingIcon, hintColor;
+
+       console.log(info)
+       
+       if (type == 'success') {
+         headingIcon = "Pedido Enviado";
+         hintColor = "bg-success"
+         textColor = "txt-success"
+       }
+       
+       popupRef = div({ class: "position-fixed p-0 alert fade show popup bdr-black", role: "alert"},
+         div({ class: `w-100 ${hintColor}`, style: "height: 4px;" }),
+         h4({ class: `alert-heading ${textColor}` }, headingIcon),
+         p(info)
+       )
+     }
+
      const enviarParada = () => {
        console.log("Parando a produção")
      }
 
      const enviarPedido = infoString => {
+       popupNotif(infoString);
+       console.log(popupRef);
+       van.add(document.body, popupRef);
+       setTimeout(() => { if (popupRef) { popupRef.remove(); } }, 10000)
        console.log(infoString)
      }
 
