@@ -1,3 +1,10 @@
+// Descomente apenas para os testes com doctest-js
+// import { ISO } from './interfaces.js';
+
+/**
+ * @implements {ISO}
+ */
+
 class C extends ISO {
   static tamanhoMax = 1189349;
   
@@ -39,6 +46,14 @@ class C0 extends C {
     this.tamanhoMax = 1189349; // Tamanho máximo do C0 em mm2
     C0.#instance = this;
   }
+  
+  /**
+   * Retorna uma string com os atributos relevantes
+   *
+   * @example mostrarPropriedades()
+   * //=> "917 mm, 1297 mm, white, 95 gsm, 1189349 mm2"
+   */
+    
 
   static getInstance() {
     if (!C0.#instance) {
@@ -296,3 +311,6 @@ class C10 extends C {
     return C10.#instance;
   }
 }
+
+// Descomente apenas para os testes com doctest-js
+// export { C, C0 }
