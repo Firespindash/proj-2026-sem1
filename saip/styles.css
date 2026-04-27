@@ -1,0 +1,225 @@
+/* O plano era não ter que criar este arquivo, tive que usar mais CSS do que esperava */
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+h1 {
+    top: 20rem;
+    font-weight: normal;
+}
+
+label {
+    margin: 0 4px 5px 4px;
+}
+
+h4 {
+    font-size: 2.4rem;
+}
+
+input::placeholder, textarea::placeholder {
+    font-style: italic;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+input, label, textarea {
+    font-size: 1.2rem;
+}
+
+.txt-black {
+    color: #0f172a;
+}
+
+.txt-gray {
+    color: #6c757d;
+}
+
+.bdr-black {
+    border-color: #0f172a;
+}
+
+.bg-accent {
+    background-color: #4da3ff !important;
+}
+
+.bg-danger {
+    background-color: #ff8c42 !important;
+}
+
+.bg-success {
+    background-color: #2ec4b6 !important;
+}
+
+.txt-success {
+    color: #1f867c;
+}
+
+.bg-info {
+    background-color: #9b7cd4 !important;
+}
+
+.txt-info {
+    color: #6f42c1;
+}
+
+.bg-warning {
+    background-color: #ffd454 !important;
+}
+
+.txt-warning {
+    color: #ffc107;
+}
+
+.bg-error {
+    background-color: #ffbb8f !important;
+}
+
+.txt-error {
+    color: #ff8c42;
+}
+
+.btn-inicial:focus-visible, .btn-inicial:hover, .btn-inicial:active {
+    background-color: #4da3ff;
+    border-color: #4da3ff;
+    box-shadow: none;
+}
+
+.btn:focus-visible, .btn:hover, .btn:active, .btn.active, .btn.show, :not(.btn-check)+.btn:active {
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-inicial {
+    width: 30rem;
+    height: 13.5rem;
+    font-size: 3.6rem;
+}
+
+.btn-pedido {
+    width: 9.6rem;
+    height: 4.8rem;
+    font-size: 2.4rem;
+}
+
+.form {
+    top: calc(20rem + 7.2rem + 10rem);
+}
+
+.form-select {
+    font-size: 1.6rem;
+    height: 2.7rem;
+    outline: none;
+}
+
+.form-control:focus, .form-select:focus, .form-select:hover, .form-select:active {
+    background-color: transparent !important;
+    border-color: inherit;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.form-group {
+    margin-bottom: 5rem;
+}
+
+.p-2-4 {
+    padding: 2px 4px;
+}
+
+.popup {
+    top: 10rem;
+    width: 27rem;
+    height: fit-content;
+    font-size: 1.6rem;
+    background-color: #e9eaec;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+h1, .popup {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+/* tablets */
+@media (max-width: 1200px) {
+    html {
+        font-size: 32.1%;
+    }
+}
+
+/* telas menores que 768px */
+@media (max-width: 768px) {
+    html {
+        font-size: 16%;
+    }
+
+    form, .form-inline {
+        width: 50% !important;
+        margin: 0 auto !important;
+        left: 0;
+        right: 0;
+    }
+
+    hr {
+        top: 125rem !important;
+    }
+
+    .form-select {
+        text-align: start !important;
+        width: 40% !important;
+        height: 10% !important;
+    }
+
+    .form-inline {
+        top: 135rem !important;
+        left : 20rem !important;
+        width: 75% !important;
+        margin: 0 !important;
+    }
+
+    .btn {
+        width: 25% !important;
+    }
+
+    .btn-inicial {
+        width: 30rem !important;
+    }
+
+    .btn-pedido {
+        width: 50% !important;
+        margin-right: 20rem !important;
+        padding: 0 4px !important;
+    }
+
+    .bg-danger {
+        width: 50% !important;
+        height: 10% !important;
+    }
+
+    .popup {
+        width: 50% !important;
+    }
+
+    #multiline-specs {
+        height: 36rem !important;
+    }
+
+    #combobox-tipo, #combobox-ed-gramatura {
+        width: 25% !important;
+    }
+
+    #combobox-ed-remover-padrao {
+        width: 35% !important;
+    }
+}

@@ -9,7 +9,7 @@ Considerações de implementação/Informações extras...
 
 # Testando
 Esse projeto implementa testes, especificamente para o saip (o programa). Usamos **Mocha** e **doctest-js** sobre o **Node.js** para fazer os testes automatizados em formato de **JSDoc** usando a sintaxe de módulos do ES6. Para fazer uso deles, `clone` o código localmente e rode:
-`npm install && npm test`, ou ainda pode se usar `pnpm` ou outros gerenciadores de pacotes compatíveis apenas trocando o termo `npm` pelo nome de outro que se queria utilizar.
+`npm install && npm test .tests.js`, ou ainda pode se usar `pnpm` ou outros gerenciadores de pacotes compatíveis apenas trocando o termo `npm` pelo nome de outro que se queria utilizar.
 
 # Contribuições
 Para contribuir com o projeto:

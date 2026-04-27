@@ -1,47 +1,214 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 :root {
-  --base-distance: 4rem;
-  --base-margin: 9.6rem;
-  --base-text-size:1.2rem;
+    --base-distance: 4rem;
+    --top-distance: 6.2rem;
+    --base-margin: 9.6rem;
+    --base-text-size: 1.2rem;
 }
 html{
-    font-family: 'Roboto', sans-serif;
     font-size: 62.5%;
+}
+nav {
+    position: fixed;
+    top: 0;
+    width: calc(100% - var(--base-margin)*2);
+    height: calc(12.8rem + 6.2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 3.2rem;
+    text-transform: uppercase;
+    padding-left: var(--base-margin);
+    padding-right: var(--base-margin);
+    z-index: 9999;
+}
+ul {
+    list-style: none;
+    display: flex;
+    gap: 7.8rem;
+}
+li {
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+a, a:active, a:visited {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    color: #4da3ff;
 }
 body {
     background: url("img/fundo.jpg");
+    background-position: 0% 0%;
+    background-repeat: repeat;
     height: 100vh;
-    color:  #ffffff;
+    color: white;
+    animation: diagonal-slide 30s linear infinite alternate;
+}
+@keyframes diagonal-slide {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -100% -100%; 
+  }
+}
+h2 {
+    font-size: 3.6rem;
+    margin-bottom: 8rem;
+}
+p {
+    font-size: 1.6rem;
+}
+.logo {
+    width: 12.8rem; height: 12.8rem;
+    object-fit: contain;
+}
+.hamburger {
+    flex-direction: column;
+    cursor: pointer;
+    gap: 1rem;
+}
+.hamburger span {
+    width: 2.4rem;
+    height: 4px;
+    color: white;
+    transition: all .3s ease;
+}
+.ativo {
+    display: flex;
 }
 #principal {
- position:absolute;
- top: calc(var(--base-distance)*10);
- left: var(--base-margin);
- font-size: calc(var(--base-text-size)*12);
- text-transform: uppercase; 
+    margin-top: calc(var(--base-distance)*10 - 12.8rem);
+    font-size: calc(var(--base-text-size)*12);
+    text-transform: uppercase;
 }
 #subtitulo {
-    position:absolute;
-    top: calc(var(--base-distance)*10 + 14.4rem + var(--base-distance) );
+    margin-top: calc(var(--base-distance));
     font-size: calc(var(--base-text-size)*6);
 }
 #texto-chamada {
-    position: absolute;
-    top: calc(var(--base-distance)*10 + var(--base-text-size)*12 + var(--base-margin) + var(--base-text-size)*6 +var(--base-distance)*2);
+    margin-top: calc(var(--base-distance)*2);
     font-size: calc(var(--base-text-size)*3);
 }
-#principal, #subtitulo {
-    left:var(--base-margin);
+#principal, #subtitulo, #texto-chamada {
+    margin-left: var(--base-margin);
 }
-button {
-outline:none;
-width:100%;
-height:7.8rem;
-background-color:#4da3ff;
-position:absolute;
-bottom:1px;
+#botao-cta {
+    margin: 0; padding: 0;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 7.8rem;
+    background-color: #4da3ff;
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 4.8rem;
+    color: white;
+    cursor: pointer;
+}
+#botao-cta:active {
+    background-color: #0d3b66;
+}
+#sobre, #empresa {
+    position: absolute;
+    top: 100vh;
+    width: calc(100% - var(--base-margin)*2);
+    height: 50vh;
+    background-color: transparent;
+    backdrop-filter: blur(12px);
+    font-size: 1.6rem;
+    padding: calc(var(--base-distance)*2) var(--base-margin);
+}
+#empresa {
+    top: calc(100vh + 50vh + 16rem);
+}
+#rodape {
+    position: absolute;
+    top: calc(100vh + (50vh + 16rem)*2);
+    width: calc(100% - var(--base-margin)*2);
+    height: 7.2rem;
+    padding-left: var(--base-margin);
+    padding-right: var(--base-margin);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hamburger, #hamburger {
+    display: none;
+}
+@media (min-width: 1920px) {
+    #principal {
+        margin-top: calc(12.8rem + 2.7%);
+        font-size: 10rem;
+    }
+    #subtitulo {
+        font-size: 5rem;
+    }
+}
+@media (min-width: 1200px) {
+    li {
+        /* I have to study this effect more */
+        -webkit-mask: linear-gradient(#fff 0 0) text;
+        mask: linear-gradient(#fff 0 0) text;
+        
+        transform: translateZ(0);
+        backdrop-filter: blur(10px);
+        filter: invert();
+        //background: rgba(255, 255, 255, 0.1);
 
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+
+        background-size: 100%;
+        isolation: isolate;
+    }
+    li::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        filter: blur(10px);
+        z-index: -1;
+    }
+}
+@media (max-width: 768px) {
+    html {
+        font-size: 32.1%;
+    }
+    ul {
+        position: absolute;
+        top: 12.8rem;
+        left: 1px;
+        width: 100%;
+        height: 100vh;
+        backdrop-filter: blur(10px);
+        display: none;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    li {
+        color: white;
+    }
+    .hamburger {
+        position: absolute;
+        display: flex;
+    }
+    #principal {
+        font-size: 7.2rem;
+    }
+    #subtitulo {
+        font-size: 3.6rem;
+    }
 }

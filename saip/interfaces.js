@@ -35,8 +35,14 @@ class ISO extends iPapel {
     super();
     
     if (this.constructor === ISO) {
-      throw new Error("... ISO.");
+      throw new Error("Não instancie ISO diretamente.");
     }
+
+    this.tamanhoMax = tamanhoMax;
+  }
+
+  mostrarTamanhoFolha() {
+    return `${this.largura} x ${this.comprimento} mm`;
   }
 }
 
@@ -53,6 +59,21 @@ class ANSI extends iPapel {
     if (this.constructor === ANSI) {
       throw new Error("Não instancie ANSI diretamente.");
     }
+
+    this.largura = largura;
+    this.comprimento = comprimento;
+    this.tamanhoMax = tamanhoMax;
+  }
+  // Racional para mostrar em mm de pol e transformar em string 
+  mostrarTamanhoFolha() {
+    return `${this.largura} x ${this.comprimento} in`;
+  }
+  // proporcao de 1 in = 25.4 mm
+  converterPolegadasEmMM() {
+    this.proporcao = 25.4;
+    this.precisao = 1;
+
+    return `${(this.largura * this.proporcao).toFixed(this.precisao)} x ${(this.comprimento * this.proporcao).toFixed(this.precisao)} mm`;
   }
   // Racional para mostrar em mm de pol e transformar em string 
   mostrarTamanhoFolha() {
