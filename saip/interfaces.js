@@ -53,7 +53,11 @@ class ISO extends iPapel {
  * @extends {iPapel}
  */
 class ANSI extends iPapel {
+<<<<<<< main
   constructor(largura, comprimento, cor, gramatura) {
+=======
+  constructor(largura, comprimento, cor, gramatura, tamanhoMax) {
+>>>>>>> main
     super(largura, comprimento, cor, gramatura);
     
     if (this.constructor === ANSI) {
@@ -92,4 +96,4 @@ class ANSI extends iPapel {
 }
 
 // Descomente apenas para os testes com doctest-js
-export { iPapel, ISO, ANSI }
+//export { iPapel, ISO, ANSI }

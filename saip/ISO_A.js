@@ -1,5 +1,5 @@
 // Descomente apenas para os testes com doctest-js
-import { ISO } from './interfaces.js';
+//import { ISO } from './interfaces.js';
 
 /**
  * @implements {ISO}
@@ -287,4 +287,4 @@ class A10 extends A {
 }
 
 // Descomente apenas para os testes com doctest-js
- export { A, A0 }
+//export { A, A0 }
