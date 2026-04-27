@@ -53,8 +53,8 @@ class ISO extends iPapel {
  * @extends {iPapel}
  */
 class ANSI extends iPapel {
-  constructor(largura, comprimento, cor, gramatura, tamanhoMax) {
-    super();
+  constructor(largura, comprimento, cor, gramatura) {
+    super(largura, comprimento, cor, gramatura);
     
     if (this.constructor === ANSI) {
       throw new Error("Não instancie ANSI diretamente.");
@@ -77,6 +77,18 @@ class ANSI extends iPapel {
 
     return `${(this.largura * this.proporcao).toFixed(this.precisao)} x ${(this.comprimento * this.proporcao).toFixed(this.precisao)} mm`;
   }
+  // Racional para mostrar em mm de pol e transformar em string 
+  mostrarTamanhoFolha() {
+    const mm = this.convPolEmMM();
+    return `${mm.larguraMM.toFixed(1)} x ${mm.comprimentoMM.toFixed(1)} mm`;
+  }
+  // proporcao de 1 in = 25.4 mm
+  convPolEmMM() {
+    return {
+      larguraMM: this.largura * 25.4,
+      comprimentoMM: this.comprimento * 25.4
+  };
+ }
 }
 
 // Descomente apenas para os testes com doctest-js

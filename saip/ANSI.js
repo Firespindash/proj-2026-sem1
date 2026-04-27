@@ -1,5 +1,5 @@
 // Apenas descomente nos testes
-import { ANSI } from './interfaces.js';
+//import { ANSI } from './interfaces.js';
 
 const propriedades = function (largura, comprimento, cor, gramatura, tamanhoMax) { return `${largura} in, ${comprimento} in, ${cor}, ${gramatura} gsm, ${tamanhoMax} sq in` };
 
@@ -11,7 +11,7 @@ class ANSI_A extends ANSI {
   constructor() {
     //(largura, comprimento, cor, gramatura, tamanhoMax)
     super(8.5, 11, "white", 95, 93.5);
-
+    
     if (ANSI_A.#instance) return ANSI_A.#instance;
     ANSI_A.#instance = this;
   }
@@ -55,6 +55,15 @@ class ANSI_B extends ANSI {
     super(11, 17, "white", 95, 187);
 
     if (ANSI_B.#instance) return ANSI_B.#instance;
+
+    ANSI_B.#instance = this;
+  }
+  static getInstance() {
+    if (!ANSI_B.#instance) ANSI_B.#instance = new ANSI_B();
+  //(largura, comprimento, cor, gramatura, tamanhoMax)
+    super(11, 17, "white", 95, 187);
+    
+    if (ANSI_B.#instance) return ANSI_B.#instance;
     ANSI_B.#instance = this;
   }
 
@@ -73,10 +82,12 @@ class ANSI_B extends ANSI {
 class ANSI_C extends ANSI {
   static #instance;
   constructor() {
+
     //(largura, comprimento, cor, gramatura, tamanhoMax)
     super(17, 22, "white", 95, 374);
 
     if (ANSI_C.#instance) return ANSI_C.#instance;
+
     ANSI_C.#instance = this;
   }
 
@@ -135,4 +146,4 @@ class ANSI_E extends ANSI {
 }
 
 // Descomente apenas para os testes
-export { ANSI_A, propriedades };
+//export { ANSI_A, propriedades };

@@ -1,5 +1,5 @@
 // Descomente apenas para os testes com doctest-js
-import { ISO } from './interfaces.js';
+// import { ISO } from './interfaces.js';
 
 /**
  * @implements {ISO}
@@ -41,6 +41,14 @@ class C0 extends C {
     
     C0.#instance = this;
   }
+  
+  /**
+   * Retorna uma string com os atributos relevantes
+   *
+   * @example mostrarPropriedades()
+   * //=> "917 mm, 1297 mm, white, 95 gsm, 1189349 mm2"
+   */
+    
 
   /**
    * Retorna uma string com os atributos relevantes
@@ -321,4 +329,4 @@ class C10 extends C {
 }
 
 // Descomente apenas para os testes com doctest-js
-export { C, C0 }
+// export { C, C0 }
