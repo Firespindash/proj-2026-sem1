@@ -112,3 +112,19 @@ class iFactory {
     }
   }
 }
+
+const registrar = mensagem => console.log(`[${Date.now()}]: ${mensagem}`);
+
+const validarSpecs = json => {
+       try {
+         JSON.parse(json);
+         return true;
+       }
+       catch (e) {
+         return false;
+       }
+}
+
+const listaPadroesCustom = JSON.parse(localStorage.getItem("padroesCustomizados") || "[]");
+
+const guardarJson = arr => localStorage.setItem("padroesCustomizados", JSON.stringify(arr))

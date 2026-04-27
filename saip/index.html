@@ -10,160 +10,8 @@
     <title>Sistema de Automação para Indústrias de Papel</title>
     <script src="https://cdn.jsdelivr.net/gh/vanjs-org/van/public/van-1.5.5.nomodule.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style type="text/css">
-     html {
-         font-family: 'Roboto', sans-serif;
-         font-size: 10px;
-     }
-     
-     body {
-         margin: 0;
-         padding: 0;
-         height: 100vh;
-     }
-
-     h1 {
-         top: 20rem;
-         font-weight: normal;
-     }
-
-     label {
-         margin: 0 4px 5px 4px;
-     }
-
-     h4 {
-         font-size: 2.4rem;
-     }
-
-     input::placeholder, textarea::placeholder {
-         font-style: italic;
-         font-weight: 500;
-         color: #6c757d;
-     }
-
-     input, label, textarea {
-         font-size: 1.2rem;
-     }
-
-     .txt-black {
-         color: #0f172a;
-     }
-
-     .txt-gray {
-         color: #6c757d;
-     }
-
-     .bdr-black {
-         border-color: #0f172a;
-     }
-
-     .bg-accent {
-         background-color: #4da3ff !important;
-     }
-
-     .bg-danger {
-         background-color: #ff8c42 !important;
-     }
-
-     .bg-success {
-         background-color: #2ec4b6 !important;
-     }
-
-     .txt-success {
-         color: #1f867c;
-     }
-
-     .bg-info {
-         background-color: #6f42c1 !important;
-     }
-
-     .txt-info {
-         color: #6f42c1;
-     }
-
-     .bg-warning {
-         background-color: #ffc107 !important;
-     }
-
-     .txt-warning {
-         color: #ffc107;
-     }
-
-     .bg-error {
-         background-color: #ff8c42 !important;
-     }
-
-     .txt-error {
-         color: #ff8c42;
-     }
-
-     .btn-inicial:focus-visible, .btn-inicial:hover, .btn-inicial:active {
-         background-color: #4da3ff;
-         border-color: #4da3ff;
-         box-shadow: none;
-     }
-
-     .btn:focus-visible, .btn:hover, .btn:active, .btn.active, .btn.show, :not(.btn-check)+.btn:active {
-         background-color: transparent;
-         border-color: transparent;
-         outline: none;
-         box-shadow: none;
-     }
-
-     .btn-inicial {
-         width: 30rem;
-         height: 13.5rem;
-         font-size: 3.6rem;
-     }
-
-     .btn-pedido {
-         width: 9.6rem;
-         height: 4.8rem;
-         font-size: 2.4rem;
-     }
-
-     .form {
-         top: calc(20rem + 7.2rem + 10rem);
-     }
-
-     .form-select {
-         font-size: 1.6rem;
-         height: 2.7rem;
-         outline: none;
-     }
-     
-     .form-control:focus, .form-select:focus, .form-select:hover, .form-select:active {
-         background-color: transparent !important;
-         border-color: inherit;
-         outline: none !important;
-         box-shadow: none !important;
-     }
-
-     .form-group {
-         margin-bottom: 5rem;
-     }
-
-     .p-2-4 {
-         padding: 2px 4px;
-     }
-
-     .popup {
-         top: 10rem;
-         width: 27rem;
-         height: fit-content;
-         font-size: 1.6rem;
-         background-color: #e9eaec;
-         overflow: hidden;
-         z-index: 9999;
-     }
-
-     h1, .popup {
-         left: 0;
-         right: 0;
-         margin: 0 auto;
-     }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" />
+    <link type="text/css" rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <script type="text/javascript" src="interfaces.js"></script>
@@ -181,22 +29,19 @@
 
      const { div, h1, h4, button, img, form, label, select, input, datalist, option, p, textarea, hr } = van.tags;
 
-     const closed = van.state(false);
-
      let telaPedidoRef, telaCustomRef, pedido, popupRef, popupTimeout;
      
      const tipoSelecionado = van.state('A0');
      const quantidade = van.state('');
-     const gramatura = van.state('75g');
-     const cor = van.state("#6c757d");
+     const gramatura = van.state('95g');
+     const cor = van.state('#ffffff');
 
      const nomePadrao = van.state('');
      const specsNovoPadrao = van.state('');
      const padraoCustomRemover = van.state('');
 
-     const listaPadroesCustom = JSON.parse(localStorage.getItem("padroesCustomizados") || "[]");
      const listaPadroesCustomizados = van.state(listaPadroesCustom);
-     let padroesCustom = listaPadroesCustomizados.val.flatMap(padrao => padrao.tipos.flatMap(tipo => Object.keys(tipo)));
+     let padroesCustom = listaPadroesCustomizados.val.flatMap(obj => obj.tipos.flatMap(tipo => Object.keys(tipo)));
      let padroesCustomIds = listaPadroesCustomizados.val.map(id => id.id);
      
      const opcoes = [...TipoA.tipos, ...TipoB.tipos, ...TipoC.tipos, "ANSI_A", "ANSI_B", "ANSI_C", "ANSI_D", "ANSI_E", ...padroesCustom];
@@ -261,18 +106,16 @@
        popupTimeout = setTimeout(() => { popupRef.remove(); }, 10000);
        
      }
-
-     const registrar = mensagem => console.log(`[${Date.now()}]: ${mensagem}`);
      
      const enviarParada = () => {
-       popupNotif("Parando a produção", "aviso");
+       popupNotif("Parando a produção.", "aviso");
        registrar('API POST / { "cmd": [ { "op": "STOP" } ] }');
      }
 
      const enviarPedido = infoCmd => {
        let infoString = JSON.parse(infoCmd.slice(11)).cmd[0];
        
-       popupNotif(`Enviando Pedido: ${infoString.quantidade} un. de ${infoString.tipo} com ${infoString.gramatura} gsm e cor ${infoString.cor}`);
+       popupNotif(`Enviando Pedido: ${infoString.quantidade} un. de ${infoString.tipo} com ${infoString.gramatura} gsm e cor ${infoString.cor}.`);
        registrar(infoCmd)
      }
 
@@ -305,6 +148,7 @@
 
              if (validar(/^[a-z0-9_]+$/i.test(tipoSelecionado.val) && quantidadeInt > 0 && quantidadeInt <= 100000 && gramaturaInt > 0 && gramaturaInt < 1000 && /^#[a-f0-9]+$/.test(cor.val))) {
                let formato;
+               
                if (padroesCustom.includes(tipoSelecionado.val)) {
                  pedido = tipoSelecionado.val;
                  
@@ -345,7 +189,7 @@
          ),
          div ({ class: "form-group" },
            label({ class: "form-group-text bg-transparent border-0 p-0 txt-gray", for: "seletor-cor" }, "Cor de impressão:"),
-           input({ id: "seletor-cor", class: "form-control bdr-black", style: "width: 5.2rem; height: 5.2rem; padding: 1px;", type: "color", value: cor, oninput: e => cor.val = e.target.value })
+           input({ id: "seletor-cor", class: "form-control bdr-black", style: "width: 5.2rem; height: 5.2rem; padding: 1px;", type: "color", value: cor.val, oninput: e => cor.val = e.target.value })
          ),
          div({ class: "d-flex justify-content-between", style: "width: 27rem; height: 4.8rem; margin-top: 10rem;" },
            button({ class: "btn btn-pedido btn-danger bg-danger border-0 p-0 rounded-0 text-center text-white", type: "button", formnovalidate: true, onclick: enviarParada }, "PARAR"),
@@ -355,22 +199,25 @@
      );
 
      const guardarPadrao = stringLiteral => {
-       listaPadroesCustomizados.val.push(stringLiteral);
+       listaPadroesCustomizados.val.push(JSON.parse(stringLiteral));
+       listaPadroesCustomizados.val.map(obj => JSON.stringify(obj));
        
-       localStorage.setItem("padroesCustomizados", JSON.stringify(listaPadroesCustomizados.val));
+       guardarJson(listaPadroesCustomizados.val);
      }
      
      const validarNovoPadrao = e => {
        e.preventDefault();
 
        if (validar(/^[a-z0-9_]/i.test(nomePadrao.val))) {
-         let stringTeste = `{ "id": "${nomePadrao.val}", ${specsNovoPadrao.val} }`;
-         let testeJson = JSON.parse(stringTeste || "[]");
-         if(validar(testeJson != [])) {
+         let stringJson = `{ "id": "${nomePadrao.val}", ${specsNovoPadrao.val} }`;
+         
+         if(validar(validarSpecs(stringJson))) {
            if (validar(!padroesCustomIds.includes(nomePadrao.val))) {
-             guardarPadrao(`{ "id": "${nomePadrao.val}", ${specsNovoPadrao.val} }`);
+             guardarPadrao(stringJson);
+             popupNotif(`Adicionando o padrão customizado "${nomePadrao.val}".`, "info");
+             registrar(`API POST /add ${stringJson}`);
            }
-           else {
+               else {
              registrar("Erro: O nome do novo padrão já existe no sistema, o nome de um padrão não pode ser igual ao de outro pré-existente")
            }
          }
@@ -382,7 +229,10 @@
 
        if (validar(padroesCustomIds.includes(padraoCustomRemover.val))) {
          listaPadroesCustomizados.val = listaPadroesCustomizados.val.filter(padrao => padrao.id !== padraoCustomRemover.val);
-         localStorage.setItem("padroesCustomizados", JSON.stringify(listaPadroesCustomizados.val));
+         
+         guardarJson(listaPadroesCustomizados.val);
+         popupNotif(`Removendo o padrão customizado: "${padraoCustomRemover.val}" do sistema.`, "aviso");
+         registrar(`API POST /del "${padraoCustomRemover.val}"`);
        }
      }
 
@@ -415,7 +265,7 @@
        )
      );
      
-     const ContainerPrincipal = () => div({ class: "m-0 p-0 d-flex flex-column justify-content-center align-items-center min-vh-100", style: "background-color: lightgray;" },
+     const ContainerPrincipal = () => div({ class: "m-0 p-0 d-flex flex-column justify-content-center align-items-center min-vh-100 bg-white" },
        header(),
        h1({ class: "position-absolute start-0 end-0 mx-auto p-0 text-center", style: "font-size: 7.2rem;" }, "SAIP"),
        div({ class: "d-flex justify-content-between", style: "width: calc((30rem * 2) + 7.2rem)" },

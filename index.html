@@ -8,25 +8,40 @@
     <meta name="description" content="Implementação do Projeto de Extensão em Desenvolvimento de Software, Turmas 18 e 19" />
     <meta name="robots" content="index,nofollow" />
     <title>Blue Paperworks</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
     <header>
-      <div class="logo"><a href="#"></a></div>
-      <nav><a href="">Manual</a></nav>
-      <nav><a href="">Sobre</a></nav>
-      <nav><a href="">Empresa</a></nav>
-      <nav><a href="">Github</a></nav>
+      <nav>
+        <a href="#"><img class="logo" src="img/logo.png" alt="Logo da Blue Paperworks" href="#"></a>
+        <ul>
+          <li><a href="">Manual</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#empresa">Empresa</a></li>
+          <li><a href="https://github.com/Firespindash/proj-2026-sem1">Github</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
       <h1 id="principal">Saip</h1>
       <h2 id="subtitulo">Sistema de Automação para indústrias de Papel</h2>
-      <p id="texto-chamada">O melhor sistema de automação de papel</p>
-      <button>Usar agora</button>
+      <p id="texto-chamada">Um sistema prático para auxiliar no compliance de sua empresa, automação da produção, e aumento de eficiência da sua fábrica. Seguimos as normas técnicas ABNT.</p>
+      <button id="botao-cta" onclick="window.location.href='https://github.com/Firespindash/proj-2026-sem1'">Usar agora</button>
+      <section id="sobre">
+        <h2>Sobre o SAIP</h2>
+        <p>A solução SAIP é um sistema inteligente desenvolvido para otimizar e automatizar processos e auxiliar no compliance das indústrias de papel. A plataforma permite configurar pedidos personalizados conforme padrões técnicos customizáveis, vindo com suporte por padrão às especificações ABNT, baseada em ISO, e ANSI, definindo formatos, gramaturas, cores e quantidades por lote, usando comandos via API para controlar as máquinas. Com suporte a gerar relatórios estratégicos e alertas preventivos, o sistema ajuda na conformidade com normas técnicas, aumentando a produtividade, reduzing falhas operacionais e melhorando automações já existentes.</p>
+      </section>
+      <section id="empresa">
+        <h2>Sobre a Empresa</h2>
+        <p>A Blue Paperworks é uma empresa de tecnologia industrial fundada com o propósito de transformar o setor produção de papel por meio da inovação e automação industrial. Especializada em soluções inteligentes para gestão produtiva, a empresa atende organizações que buscam mais eficiência, sustentabilidade e adaptabilidade à padrões de qualidade previstos por normas técnicas de alcance internacional e nacional. Seu compromisso é entregar ferramentas modernas que impulsionem a produção, resultados, e construir o futuro da indústria.</p>
+      </section>
     </main>
     <footer>
-      
+      <div id="rodape">
+        <p>&copy; 2026 Blue Papeworks. Todos os direitos reservados.</p>
+        <p>Contato: lucas.adriel.lima@uni9.edu.br</p>
+      </div>
     </footer>
   </body>
 </html>
