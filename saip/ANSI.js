@@ -58,12 +58,6 @@ class ANSI_B extends ANSI {
 
     ANSI_B.#instance = this;
   }
-  static getInstance() {
-    if (!ANSI_B.#instance) ANSI_B.#instance = new ANSI_B();
-    
-    if (ANSI_B.#instance) return ANSI_B.#instance;
-    ANSI_B.#instance = this;
-  }
 
   mostrarPropriedades() {
     return propriedades();
